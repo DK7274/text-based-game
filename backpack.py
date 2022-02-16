@@ -20,7 +20,7 @@ while True:
       if action == "yes":
         for a in items:
           print(a)
-        action = input("what do you want to replace?\n")
+        action = input("what do you want to replace? \n")
         for a in range(len(items)):
           if items[a] == action:
             items[a] = pickup
