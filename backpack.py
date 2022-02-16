@@ -14,9 +14,9 @@ while True:
       if items[a] == "empty":
         print("you pick up the " + pickup)
         items[a] = pickup
-        break
+        break #picks up the item that you asked to pick up
     else:
-      action = input("your bag is full! do you want to replace an item?\n")
+      action = input("your bag is full! do you want to replace an item?\n") #replaces item in bag with new item
       if action == "yes":
         for a in items:
           print(a)
