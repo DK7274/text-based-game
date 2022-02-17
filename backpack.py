@@ -28,4 +28,6 @@ while True:
             break
           else:
             print("you do not have " + action + " in your bag!")
-      else: break
+            break
+      else:
+        break
