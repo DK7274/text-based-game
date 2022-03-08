@@ -6,7 +6,7 @@ items = ["Sword","empty","empty", "empty"] #an array that shows the items in you
 while True:
   action = input("what do you do next?\n") #asks what activity you do next
   if action == "check bag":
-    for a in items: 
+    for a in items:
       print(a) #lists the items in your bag
   if action == "pick up":
     pickup = input("what do you want to pick up?\n")
