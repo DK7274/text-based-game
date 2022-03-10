@@ -1,10 +1,26 @@
 import Rooms
-north = "n"|"north"
-south = "s"|"south"
-east = "e"|"east"
-def movement(move):
-    Rooms.room.
+import Enemy
 def findAction(action):
     match action:
-        case "n" | "north" | "s" | "south" | "e" | "east" | "w" | "west":
-            movement(action)
+        case  "inspect room":
+            print(Rooms.roomDesc)
+        case "go up" | "up":
+            if Rooms.currentRoom < 5:
+                if Enemy.enemyCount == 0:
+                    Rooms.currentRoom = Rooms.currentRoom + 1
+                    print("you move up a floor, you are now on floor " + str(Rooms.currentRoom))
+                    print(Rooms.roomDesc)
+                else:
+                    print("you cannot leave yet, there's more killing to do!")
+            else:
+                print("you are at the top floor, you cannot go any higher!")
+        case "go down" | "down":
+            if Rooms.currentRoom > 0:
+                if Enemy.enemyCount == 0:
+                    Rooms.currentRoom = Rooms.currentRoom - 1
+                    print("you move down a floor, you are now on floor " + str(Rooms.currentRoom))
+                    print(Rooms.roomDesc)
+                else:
+                    print("you cannot leave yet, there's more killing to do!")
+            else:
+                print("you are on the bottom floor, you cannot go any lower")
