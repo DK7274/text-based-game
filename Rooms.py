@@ -1,4 +1,5 @@
 import Actions
+import Items
 currentRoom = 1
 roomDesc = 1
 allowedInteract = 1
@@ -6,7 +7,8 @@ def roomOne():
     global roomDesc
     global allowedInteract
     roomDesc = "you are in a hotel lobby, with an elevator at the north end, and a reception desk with a small sign on it"
-    allowedInteract = ["Sign"]
+    print(Items.signRoomOneName)
+    allowedInteract = [Items.signRoomOneName]
 def roomTwo():
     global roomDesc
     roomLight = 0

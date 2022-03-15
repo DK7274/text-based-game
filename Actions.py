@@ -29,3 +29,4 @@ def findAction(action):
         case "interact":
             print("you can interact with")
             print( ','.join(Rooms.allowedInteract))
+            interact = input("what do you want to interact with?")
