@@ -1,3 +1,4 @@
+import Items
 import Rooms
 import Enemy
 def findAction(action):
@@ -32,4 +33,4 @@ def findAction(action):
             interact = input("what do you want to interact with?\n")
             for a in range(len(Rooms.allowedInteract)):
                 if interact == Rooms.allowedInteract[a]:
-                    print("you interact with " + interact)
+                    Items.itemChecker(interact)
