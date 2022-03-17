@@ -3,6 +3,8 @@ import Items
 currentRoom = 1
 roomDesc = 1
 allowedInteract = 1
+global roomLight
+roomLight = 0
 def roomOne():
     global roomDesc
     global allowedInteract
@@ -11,7 +13,6 @@ def roomOne():
     allowedInteract = [Items.signRoomOneName]
 def roomTwo():
     global roomDesc
-    roomLight = 0
     global allowedInteract
     if roomLight == 0:
         roomDesc = "you are in a darkened room, there is a light switch on the wall beside the elevator. You can see a large rectangular object in the center of the room "
