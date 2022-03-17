@@ -5,6 +5,7 @@ roomDesc = 1
 allowedInteract = 1
 global roomLight
 roomLight = 0
+global crateOpen
 def roomOne():
     global roomDesc
     global allowedInteract
@@ -15,14 +16,19 @@ def roomTwo():
     global roomDesc
     global allowedInteract
     if roomLight == 0:
-        roomDesc = "you are in a darkened room, there is a light switch on the wall beside the elevator. You can see a large rectangular object in the center of the room "
-        allowedInteract = ["Light Switch", "Box"]
+        roomDesc = "you are in a darkened room, there is a light switch on the wall beside the elevator. You can see a large rectangular box in the center of the room "
+        if Items.crateOpen == 0:
+            allowedInteract = ["Light Switch", "Box"]
+        else:
+            allowedInteract = ["light Switch"]
 
     if roomLight == 1:
         roomDesc = "you are in a room with a dim bulb lighting it. Shadows flicker along the edges where the walls meet the floor. There is a green crate in the centre of the room."
-        allowedInteract = ["Light Switch", "Crate"]
+        if Items.crateOpen == 0:
+            allowedInteract = ["Light Switch", "Crate"]
+        else:
+            allowedInteract = ["Light Switch"]
 def roomChecker():
-    print("1")
     if currentRoom == 1:
         roomOne()
     elif currentRoom == 2:

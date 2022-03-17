@@ -1,9 +1,10 @@
 import Items
 import Rooms
 import Enemy
+global interact
 def findAction(action):
     match action:
-        case  "inspect room":
+        case "inspect":
             print(Rooms.roomDesc)
         case "go up" | "up":
             if Rooms.currentRoom < 5:
@@ -34,3 +35,4 @@ def findAction(action):
             for a in range(len(Rooms.allowedInteract)):
                 if interact == Rooms.allowedInteract[a]:
                     Items.itemChecker(interact)
+    Rooms.roomChecker()
