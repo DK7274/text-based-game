@@ -1,13 +1,17 @@
 import Items
 import Rooms
 import Enemy
+import time
 global interact
 def findAction(action):
     match action:
         case "inspect":
             print(Rooms.roomDesc)
         case "go up" | "up":
-            if Rooms.currentRoom < 5:
+            if Rooms.currentRoom == 4 and Rooms.doorOpen == 0:
+                    print("The door blocks your way, you cannot go any further.")
+            elif Rooms.currentRoom < 5:
+                print("penis")
                 if Enemy.enemyCount == 0:
                     Rooms.currentRoom = Rooms.currentRoom + 1
                     Rooms.roomChecker()
@@ -35,4 +39,8 @@ def findAction(action):
             for a in range(len(Rooms.allowedInteract)):
                 if interact == Rooms.allowedInteract[a]:
                     Items.itemChecker(interact)
+        case "quit":
+            print("game quitting! please play again another time!")
+            time.sleep(5)
+            exit()
     Rooms.roomChecker()

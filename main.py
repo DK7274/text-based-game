@@ -10,7 +10,7 @@ match menu:
         startGame = input("do you want to know how to play?\n")
         if startGame == "yes":
             print("to play CyberSpunk 2023, you must input simple text commands to control your character, defeat enemies,")
-            print("and use your inventory. Use simple commands such as move to (blank) and pick up (blank) in order to command your character!\n \n")
+            print("and use your inventory. Use simple commands such as 'up' to go upand 'interact' in order to command your character!\n \n")
         print(Rooms.roomDesc)
     case "quit":
         gameRun = 3

@@ -6,13 +6,24 @@ allowedInteract = 1
 global roomLight
 roomLight = 0
 global crateOpen
+global buttonOn
+buttonOn = 0
+global Lever1
+Lever1 = 0
+global Lever2
+Lever2 = 0
+global Lever3
+Lever3 = 0
 global puzzleOpen
 puzzleOpen = 0
+global repeatDisable
+repeatDisable = 1
+global doorOpen
+doorOpen = 0
 def roomOne():
     global roomDesc
     global allowedInteract
     roomDesc = "you are in a hotel lobby, with an elevator at the north end, and a reception desk with a small sign on it"
-    print(Items.signRoomOneName)
     allowedInteract = [Items.signRoomOneName]
 def roomTwo():
     global roomDesc
@@ -33,9 +44,20 @@ def roomTwo():
 def roomFour():
     global roomDesc
     global allowedInteract
+    global buttonOn
+    global puzzleOpen
+    global repeatDisable
+    global doorOpen
+    if Lever1 == 1 and Lever2 == 0 and Lever3 == 1 and repeatDisable == 1:
+        print("you hear a dull rumbling, and a light above the button starts growing brightly.")
+        buttonOn = 1
+        repeatDisable = 0
+        doorOpen = 1
     roomDesc = "You are in a large chamber, a locked security door blocking your path. \nThere a three levers to the left of the door, and a button to the right"
-    if puzzleOpen == 0:
+    if buttonOn == 0:
         allowedInteract = ["Button","Lever1","Lever2","Lever3"]
+    if buttonOn == 1:
+        allowedInteract = ["Button"]
 def roomChecker():
     if currentRoom == 1:
         roomOne()

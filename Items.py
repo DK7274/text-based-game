@@ -27,11 +27,35 @@ def roomInteract2(itemInteract2):
             print("you open the bolt and heave open the crate, inside is a small pistol, and a note reading \n 'you will need this where you are going'")
             global crateOpen
             crateOpen = 1
-def itemInteract(itemInteract4):
+def roomInteract4(itemInteract4):
     match itemInteract4:
+        case "Lever1":
+            if Rooms.Lever1 == 0:
+                print("You flip the first lever up, you hear a slight buzz behind the wall.")
+                Rooms.Lever1 = 1
+            else:
+                print("you flip the first lever back down.")
+                Rooms.Lever1 = 0
+        case "Lever2":
+            if Rooms.Lever2 == 0:
+                print("You flip the second lever up.")
+                Rooms.Lever2 = 1
+            else:
+                print("You flip the second lever down, you hear a slight buzz behind the wall.")
+                Rooms.Lever2 = 0
+        case "Lever3":
+            if Rooms.Lever3 == 0:
+                print("You flip the third lever up, you hear a slight buzz behind the wall.")
+                Rooms.Lever3 = 1
+            else:
+                print("You flip the third lever down")
+                Rooms.Lever3 = 0
         case "Button":
-            "you push the button and die"
-
+            if Rooms.buttonOn == 0:
+                print("You push the button and nothing happens")
+            if Rooms.buttonOn == 1:
+                print("The door slowly rumbles and opens, revealing the elevator to the final floor.\n There is a skull on the button to the next floor.")
+                Rooms.doorOpen = 1
 def itemChecker(itemInteract):
     if Rooms.currentRoom == 1:
         roomInteract1(itemInteract)
