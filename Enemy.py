@@ -1,1 +1,1 @@
-enemyCount = 0
+enemyCount = 0 #placeholder for enemy count so that I could test out restricting movement between rooms

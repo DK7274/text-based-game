@@ -1,1 +1,0 @@
-itemlist = ["steel sword", "chainmail"]
