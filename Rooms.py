@@ -6,6 +6,8 @@ allowedInteract = 1
 global roomLight
 roomLight = 0
 global crateOpen
+global puzzleOpen
+puzzleOpen = 0
 def roomOne():
     global roomDesc
     global allowedInteract
@@ -28,6 +30,12 @@ def roomTwo():
             allowedInteract = ["Light Switch", "Crate"]
         else:
             allowedInteract = ["Light Switch"]
+def roomFour():
+    global roomDesc
+    global allowedInteract
+    roomDesc = "You are in a large chamber, a locked security door blocking your path. \nThere a three levers to the left of the door, and a button to the right"
+    if puzzleOpen == 0:
+        allowedInteract = ["Button","Lever1","Lever2","Lever3"]
 def roomChecker():
     if currentRoom == 1:
         roomOne()
@@ -35,7 +43,7 @@ def roomChecker():
         roomTwo()
     #elif currentRoom == 3:
      #   roomThree()
-    #elif currentRoom == 4:
-     #   roomFour()
+    elif currentRoom == 4:
+        roomFour()
     #elif currentRoom == 5:
      #   roomFive()

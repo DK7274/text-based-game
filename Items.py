@@ -27,8 +27,15 @@ def roomInteract2(itemInteract2):
             print("you open the bolt and heave open the crate, inside is a small pistol, and a note reading \n 'you will need this where you are going'")
             global crateOpen
             crateOpen = 1
+def itemInteract(itemInteract4):
+    match itemInteract4:
+        case "Button":
+            "you push the button and die"
+
 def itemChecker(itemInteract):
     if Rooms.currentRoom == 1:
         roomInteract1(itemInteract)
     if Rooms.currentRoom == 2:
         roomInteract2(itemInteract)
+    if Rooms.currentRoom == 4:
+        roomInteract4(itemInteract)
