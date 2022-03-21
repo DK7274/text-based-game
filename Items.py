@@ -1,5 +1,6 @@
 import Rooms
 import Actions
+import NewBackpack
 signRoomOneDesc= "you approach the sign and read it. it reads: 'ATTENTION: BUILDING HARBORS DANGEROUS FUGITIVES. CLIMB AT YOUR OWN RISK'" #setting description and name for sign in room 1
 signRoomOneName = "sign"
 global crateOpen
@@ -24,9 +25,16 @@ def roomInteract2(itemInteract2): #code for the second room interaction
         case "Box": #code for not being able to open the crate in the dark
                 print("you feel your way over to the box, stumbling on small imperfections in the floor along the way. When you reach\n it, you attempt to open the lid but it refuses to budge")
         case "Crate": #code for opening the crate in the light
-            print("you open the bolt and heave open the crate, inside is a small pistol, and a note reading \n 'you will need this where you are going'")
+            print("you open the bolt and heave open the crate, inside is a small pistol and a note reading \n 'you will need these where you are going'")
             global crateOpen
             crateOpen = 1
+        case "Gun":
+            print("You pick up the gun")
+            for a in range(len(NewBackpack.backPack)):
+                if NewBackpack.backPack[a] == "empty":
+                    NewBackpack.backPack[a] = "Gun"
+                    break
+            Rooms.gunTake = 1
 def roomInteract4(itemInteract4): #interaction in room 4
     match itemInteract4:
         case "Lever1": #first lever

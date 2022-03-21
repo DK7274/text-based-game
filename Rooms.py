@@ -1,8 +1,10 @@
 import Actions
 import Items
+import Enemy
 currentRoom = 1
 roomDesc = 1
 allowedInteract = 1
+allowedPickup = 1
 global roomLight
 roomLight = 0
 global crateOpen
@@ -20,6 +22,9 @@ global repeatDisable
 repeatDisable = 1
 global doorOpen
 doorOpen = 0
+global gunTake
+gunTake = 0
+enemySetUp = 1
 def roomOne(): #setup for the first room
     global roomDesc
     global allowedInteract
@@ -28,19 +33,31 @@ def roomOne(): #setup for the first room
 def roomTwo(): #setup for the second room
     global roomDesc
     global allowedInteract
+    global allowedPickup
     if roomLight == 0: #if light is off, you cannot open the crate
         roomDesc = "you are in a darkened room, there is a light switch on the wall beside the elevator. You can see a large rectangular box in the center of the room "
         if Items.crateOpen == 0:
             allowedInteract = ["Light Switch", "Box"]
         else: #removes interaction option with box if it has already been opened
-            allowedInteract = ["light Switch"]
+            allowedInteract = ["Light Switch"]
 
     if roomLight == 1: #allows you to interact with the crate if the light is on
         roomDesc = "you are in a room with a dim bulb lighting it. Shadows flicker along the edges where the walls meet the floor. There is a green crate in the centre of the room."
         if Items.crateOpen == 0:
             allowedInteract = ["Light Switch", "Crate"]
-        else: # takes the crate out of the array if it has already been opened
+        elif gunTake == 0: # takes the gun and crate out of the array if it has already been opened
+            allowedInteract = ["Light Switch", "Gun"]
+        else:
             allowedInteract = ["Light Switch"]
+def roomThree():
+    global enemySetUp
+    global roomDesc
+    if enemySetUp == 1:
+        Enemy.enemyCount = 2
+        enemySetUp = 0
+    if Enemy.enemyCount == 2:
+        roomDesc = "As you enter the room, you see two cyborg bandits.\ntheir hands move towards their holsters"
+
 def roomFour():
     global roomDesc
     global allowedInteract
@@ -64,8 +81,8 @@ def roomChecker(): #code that checks the room and runs the function for each sep
         roomOne()
     elif currentRoom == 2:
         roomTwo()
-    #elif currentRoom == 3:
-     #   roomThree()
+    elif currentRoom == 3:
+        roomThree()
     elif currentRoom == 4:
         roomFour()
     #elif currentRoom == 5:

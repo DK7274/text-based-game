@@ -1,12 +1,17 @@
+import Actions
 import Items
 import Rooms
 import Enemy
 import time
 global interact
+import NewBackpack
 def findAction(action): #function for finding any action you are doing
     match action:
         case "inspect": #inspection action for checking the current room description
             print(Rooms.roomDesc)
+        case "attack":
+            if Enemy.enemyCount == 0 and Enemy.bossHere == 0:
+                print("there is no enemy here, you cannot attacK!")
         case "go up" | "up": #code for going up a room
             if Rooms.currentRoom == 4 and Rooms.doorOpen == 0: #this code makes sure that you have unlocked the puzzle on floor 4 before it allows you to go to floor 5
                     print("The door blocks your way, you cannot go any further.")
@@ -38,6 +43,8 @@ def findAction(action): #function for finding any action you are doing
             for a in range(len(Rooms.allowedInteract)):
                 if interact == Rooms.allowedInteract[a]:
                     Items.itemChecker(interact) #if item is in array for allowedInteract, allows you to interact with it
+        case "check bag":
+            print(NewBackpack.backPack)
         case "quit": #alternate code for quitting while normally playing the game
             print("game quitting! please play again another time!")
             time.sleep(5)
