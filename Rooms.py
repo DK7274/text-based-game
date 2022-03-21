@@ -57,6 +57,10 @@ def roomThree():
         enemySetUp = 0
     if Enemy.enemyCount == 2:
         roomDesc = "As you enter the room, you see two cyborg bandits.\ntheir hands move towards their holsters"
+    elif Enemy.enemyCount == 1:
+        roomDesc = "One of the cyborgs is laying on the floor, riddled with bullet holes, the other is still standing defiantly"
+    elif Enemy.enemyCount == 0:
+        roomDesc = "The bloody and battered bodies of two cyborgs lay, broken, on the floor. You can see the lights slowly dying in their eyes."
 
 def roomFour():
     global roomDesc
