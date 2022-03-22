@@ -1,6 +1,7 @@
 import Rooms
 import Actions
 import time
+global gameRun
 gameRun = 1
 Rooms.roomChecker() #calls checking the room to set the room description
 print("welcome to CyberSpunk 2023! a technologically advanced futuristic city where dreams are made of (or crushed")

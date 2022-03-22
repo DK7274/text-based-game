@@ -25,6 +25,7 @@ doorOpen = 0
 global gunTake
 gunTake = 0
 enemySetUp = 1
+bossSetUp = 1
 def roomOne(): #setup for the first room
     global roomDesc
     global allowedInteract
@@ -80,6 +81,13 @@ def roomFour():
         allowedInteract = ["Button","Lever1","Lever2","Lever3"]
     if buttonOn == 1: #if button is on, you cannot change the lever code, just press the button
         allowedInteract = ["Button"]
+def roomFive():
+    global bossSetUp
+    global roomDesc
+    roomDesc = "In this room, there is a large robot, wielding a gun."
+    if bossSetUp == 1:
+        Enemy.bossHere = 1
+        bossSetUp = 0
 def roomChecker(): #code that checks the room and runs the function for each seperate room.
     if currentRoom == 1:
         roomOne()
@@ -89,5 +97,5 @@ def roomChecker(): #code that checks the room and runs the function for each sep
         roomThree()
     elif currentRoom == 4:
         roomFour()
-    #elif currentRoom == 5:
-     #   roomFive()
+    elif currentRoom == 5:
+        roomFive()
