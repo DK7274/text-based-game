@@ -85,7 +85,7 @@ def roomFive():
     global bossSetUp
     global roomDesc
     roomDesc = "In this room, there is a large robot, wielding a gun."
-    if bossSetUp == 1:
+    if bossSetUp == 1: #same as enemy setup, just sets up boss
         Enemy.bossHere = 1
         bossSetUp = 0
 def roomChecker(): #code that checks the room and runs the function for each seperate room.

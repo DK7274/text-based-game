@@ -5,10 +5,9 @@ import time
 score = 0
 global interact
 import NewBackpack
-import random
 def findAction(action): #function for finding any action you are doing
     global score
-    score = score + 1
+    score = score + 1 #adds to score, score is amount of turns taken to win game
     match action:
         case "inspect": #inspection action for checking the current room description
             print(Rooms.roomDesc)
