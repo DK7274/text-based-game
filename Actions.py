@@ -2,6 +2,7 @@ import Items
 import Rooms
 import Enemy
 import time
+
 global interact
 import NewBackpack
 import random
@@ -12,6 +13,18 @@ def findAction(action): #function for finding any action you are doing
         case "attack": #attack action
             if Enemy.enemyCount == 0 and Enemy.bossHere == 0: #if there is no enemy or boss, you cannot attack.
                 print("there is no enemy here, you cannot attack!")
+            elif Enemy.bossHere == 1: #more simplified version of enemy fight, however more damage and more health therefore more likely to kill you
+                Enemy.bossHealth = Enemy.bossHealth - Enemy.playerDamage
+                print("You hit the robot for " + str(Enemy.playerDamage) + "!\nBoss now has "+ str(Enemy.bossHealth) + " Health left." )
+                Enemy.resetDamage()
+                if Enemy.bossHealth <= 0:
+                    print("You killed the boss! congratulations!")
+                    gameWin()
+                else:
+                    Enemy.playerHealth = Enemy.playerHealth - Enemy.bossDamage
+                    print("The boss hit you for " + str(Enemy.bossDamage) + "!\nYou now have " + str(Enemy.playerHealth) + " Health left!")
+                    if Enemy.playerHealth <= 0:
+                        dieGameOver()
             elif Enemy.enemyCount == 1 or 2: #checks if there is an enemy
                 attack = input("Who do you want to attack?\n Enemy 1 or Enemy 2?\n")
                 if attack == "Enemy 1": #if you attack the first enemy
@@ -24,6 +37,8 @@ def findAction(action): #function for finding any action you are doing
                         if Enemy.enemy1Health <= 0: #if you get the enemy to 0 or below, then you kill it
                             print("You kill Enemy 1!")
                             Enemy.enemyCount = Enemy.enemyCount - 1 #clears enemy from enemy count
+                            if Enemy.enemyCount == 0: #restores HP so you have enough to fight final boss when you win this fight
+                                Enemy.playerHealth = 100
                         else:
                             Enemy.playerHealth = Enemy.playerHealth - Enemy.enemy1Damage #enemy fights back
                             print("Enemy 1 hits you for " + str(Enemy.enemy1Damage) +" !\n you now have " + str(Enemy.playerHealth) + " Health left!")
@@ -39,6 +54,8 @@ def findAction(action): #function for finding any action you are doing
                         if Enemy.enemy2Health <= 0:
                             print("You kill Enemy 2!")
                             Enemy.enemyCount = Enemy.enemyCount - 1
+                            if Enemy.enemyCount == 0:
+                                Enemy.playerHealth = 100
                         else:
                             Enemy.playerHealth = Enemy.playerHealth - Enemy.enemy2Damage
                             print("Enemy 2 hits you for " + str(Enemy.enemy2Damage) +" !\n you now have " + str(Enemy.playerHealth) + " Health left!")
@@ -84,4 +101,7 @@ def findAction(action): #function for finding any action you are doing
     Rooms.roomChecker()  # checks room every time function is run so that the description of room stays up to date
 def dieGameOver(): #game over from dying
     print("you died! game over!")
+    exit()
+def gameWin():
+    print("Congratulations! you won the game!")
     exit()
