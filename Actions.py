@@ -98,6 +98,8 @@ def findAction(action): #function for finding any action you are doing
             print("game quitting! please play again another time!")
             time.sleep(5)
             exit()
+        case _:
+            print("you cannot do that!")
     Rooms.roomChecker()  # checks room every time function is run so that the description of room stays up to date
 def dieGameOver(): #game over from dying
     print("you died! game over!")
