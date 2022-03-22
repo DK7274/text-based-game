@@ -53,6 +53,8 @@ def roomTwo(): #setup for the second room
 def roomThree():
     global enemySetUp
     global roomDesc
+    global allowedInteract
+    allowedInteract = "Nothing"
     if enemySetUp == 1:
         Enemy.enemyCount = 2
         enemySetUp = 0
@@ -82,8 +84,10 @@ def roomFour():
     if buttonOn == 1: #if button is on, you cannot change the lever code, just press the button
         allowedInteract = ["Button"]
 def roomFive():
+    global allowedInteract
     global bossSetUp
     global roomDesc
+    allowedInteract = "Nothing"
     roomDesc = "In this room, there is a large robot, wielding a gun."
     if bossSetUp == 1: #same as enemy setup, just sets up boss
         Enemy.bossHere = 1
