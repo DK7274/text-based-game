@@ -2,11 +2,13 @@ import Items
 import Rooms
 import Enemy
 import time
-
+score = 0
 global interact
 import NewBackpack
 import random
 def findAction(action): #function for finding any action you are doing
+    global score
+    score = score + 1
     match action:
         case "inspect": #inspection action for checking the current room description
             print(Rooms.roomDesc)
@@ -103,7 +105,9 @@ def findAction(action): #function for finding any action you are doing
     Rooms.roomChecker()  # checks room every time function is run so that the description of room stays up to date
 def dieGameOver(): #game over from dying
     print("you died! game over!")
+    print("Your score was: "+score)
     exit()
 def gameWin():
     print("Congratulations! you won the game!")
+    print("Your score was: "+score)
     exit()
